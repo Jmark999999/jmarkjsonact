@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta brand="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+        <title>ANIMALS</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="text-center" style="color:black">ANIMALS</h2>
+          
+    
+            <div id="demo"></div>
+        
+            <script>
+                var txt = "";
+                const xmlhttp = new XMLHttpRequest();
+                xmlhttp.onload = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let animals = JSON.parse(this.responseText);
+                        console.log(animals);
+                        let txt = "";
+                        let user = "";
+            
+                        for(i = 0; i < animals.length;i++){
+                            txt += `
+                                <div class="card mb-3">
+                                    <div class="row no-gutters">
+                                        <div class="col-md-8">
+                                            <img class="card-img" src="pics/img/${animals[i].img}" alt="">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card-body">
+                                                <p class="card-title"><b>Types of Animals: </b>${animals[i].type}</p>
+                                                <p class="card-text"><b>Name: </b>${animals[i].name}</p>
+                                                <p class="card-text"><b>Scientific Name: </b>${animals[i].scientific_name}</p>
+                                                <p class="card-text"><b>Class:</b>${animals[i].class} </p>
+                                                <p class="card-text"><b>Parts: </b></p>
+                                              
+                                                <ul class="list-unstyled">
+                                                    
+                                    `;
+                            for(j = 0; j < animals[i].parts.length; j++){
+                                txt += `
+                                    <li><b>•</b> ${animals[i].parts[j]}</li>
+                                `;
+                            }
+                            txt += `
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        document.getElementById("demo").innerHTML = txt;
+                    }
+                }
+                xmlhttp.open("GET", "http://santosjmarkactjson.test/actjson.php");
+                xmlhttp.send();
+            </script>
+    
+        </div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    </body>
+    </html>
