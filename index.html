@@ -11,7 +11,7 @@
     </head>
     <body>
         <div class="container">
-            <h2 class="text-center" style="color:black">ANIMALS</h2>
+            <h2 class="text-center" style="color:rgb(255, 251, 251)">ANIMALS</h2>
           
     
             <div id="demo"></div>
@@ -39,14 +39,14 @@
                                                 <p class="card-text"><b>Name: </b>${animals[i].name}</p>
                                                 <p class="card-text"><b>Scientific Name: </b>${animals[i].scientific_name}</p>
                                                 <p class="card-text"><b>Class:</b>${animals[i].class} </p>
-                                                <p class="card-text"><b>Parts: </b></p>
+                                                <p class="card-text"><b>Description: </b></p>
                                               
                                                 <ul class="list-unstyled">
                                                     
                                     `;
-                            for(j = 0; j < animals[i].parts.length; j++){
+                            for(j = 0; j < animals[i].description.length; j++){
                                 txt += `
-                                    <li><b>•</b> ${animals[i].parts[j]}</li>
+                                    <li><b>•</b> ${animals[i].description[j]}</li>
                                 `;
                             }
                             txt += `
